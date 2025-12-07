@@ -4,21 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tính Ngày – Tháng – Năm</title>
+<script src="https://cdn.tailwindcss.com"></script>
 
 <style>
   body {
-    font-family: Arial, sans-serif; /* ✅ Font Arial */
-    background: #ffffff; /* ✅ Nền trắng */
+    font-family: ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    background: #ffffff;
     margin: 0;
     padding: 0;
-    color: #000000; /* ✅ Text màu đen */
+    color: #000000;
   }
 
   .container {
     max-width: 520px;
     margin: 40px auto;
     padding: 28px;
-    background: #ffffff; /* nền trắng */
+    background: #ffffff;
     border-radius: 20px;
   }
 
@@ -26,14 +27,14 @@
     text-align: center;
     margin-bottom: 25px;
     color: #000000;
-    font-size: clamp(24px, 8vw, 36px); /* tự chỉnh từ 24px -> 36px */
+    font-size: clamp(10px, 8vw, 36px);
   }
 
   label {
     display: block;
-    font-size: clamp(14px, 4vw, 16px); /* tự chỉnh từ 14px -> 16px */
+    font-size: clamp(10px, 4vw, 16px);
     margin-top: 18px;
-    font-weight: 600;
+    font-weight: 400;
     color: #000000;
   }
 
@@ -43,40 +44,27 @@
   }
 
   input[type="date"] {
-    padding: 14px;
+    width: min(100%, 600px);
+    height: 48px;
+    padding: 6px 10px;
     margin-top: 8px;
-    border-radius: 6px; /* giảm bo góc từ 12px -> 6px */
+    border-radius: 6px;
     border: 1px solid #ccc;
-    font-size: clamp(14px, 3vw, 16px); /* tự chỉnh từ 14px -> 16px */
+    font-size: clamp(10px, 3vw, 16px);
     color: #000000;
-  }
-
-  button {
-    padding: 16px;
-    color: #ffffff; /* chữ trắng trên nút */
-    background: #006400; /* ✅ xanh lá đậm */
-    border: none;
-    border-radius: 14px;
-    font-size: clamp(16px, 4vw, 18px); /* tự chỉnh từ 16px -> 18px */
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.2s;
-    margin-top: 28px;
-  }
-
-  button:hover {
-    background: #004d00; /* xanh lá đậm hơn khi hover */
+    font-family: ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    box-sizing: border-box;
   }
 
   .result-box {
     text-align: center;
-    background: transparent; /* bỏ nền khung */
-    padding: 0;               /* bỏ padding khung */
-    border-radius: 0;         /* không bo góc */
-    font-size: clamp(18px, 5vw, 24px); /* tự chỉnh từ 18px -> 24px */
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    font-size: clamp(10px, 5vw, 24px);
     line-height: 1.7;
-    margin-top: 12px;         /* giữ khoảng cách nhỏ */
-    border: none;             /* bỏ đường viền */
+    margin-top: 36px;
+    border: none;
   }
 
   .item {
@@ -86,23 +74,36 @@
   }
 
   .number {
-    color: #ff0000; /* ✅ số màu đỏ */
+    color: #ff0000;
   }
 </style>
 </head>
 <body>
 
-<div class="container">
-  <h2>Năng lượng cá nhân</h2>
+<div class="max-w-md mx-auto mt-10 p-7 bg-white rounded-xl">
+  <h2 class="text-center text-3xl font-bold mb-6">Năng lượng cá nhân</h2>
 
-  <label>Ngày sinh:</label>
-  <input type="date" id="birth" class="full">
+  <label class="flex items-center gap-2 text-sm font-medium text-gray-700 mb-2">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+      <circle cx="12" cy="7" r="4"></circle>
+    </svg>
+    Ngày sinh:
+  </label>
+  <input type="date" id="birth" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-base font-mono mt-1 mb-6">
 
-  <label>Ngày cần tính (để trống = hôm nay):</label>
-  <input type="date" id="target" class="full">
+  <label class="flex items-center gap-2 text-sm font-medium text-gray-700 mb-2">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M8 2v4"></path>
+      <path d="M16 2v4"></path>
+      <rect width="18" height="18" x="3" y="4" rx="2"></rect>
+      <path d="M3 10h18"></path>
+    </svg>
+    Ngày cần tính:
+  </label>
+  <input type="date" id="target" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-base font-mono mt-1 mb-8">
 
-  <!-- nút đã bị loại bỏ - tự động tính khi thay đổi input -->
-  <div id="output" class="full"></div>
+  <div id="output" class="w-full"></div>
 </div>
 
 <script>
@@ -114,17 +115,23 @@ function sumToOneDigit(num) {
   return Number(num);
 }
 
+function setTodayAsDefault() {
+  let today = new Date();
+  let yyyy = today.getFullYear();
+  let mm = String(today.getMonth() + 1).padStart(2, "0");
+  let dd = String(today.getDate()).padStart(2, "0");
+  document.getElementById("target").value = `${yyyy}-${mm}-${dd}`;
+}
+
 function calculate() {
   let birth = document.getElementById("birth").value;
   let target = document.getElementById("target").value;
 
-  // Nếu chưa nhập ngày sinh -> không hiện kết quả (bỏ thông báo)
   if (!birth) {
     document.getElementById("output").innerHTML = "";
     return;
   }
 
-  // Nếu không chọn ngày cần tính → tự lấy ngày hôm nay
   if (!target) {
     let today = new Date();
     let yyyy = today.getFullYear();
@@ -136,7 +143,7 @@ function calculate() {
   let [y1, m1, d1] = birth.split("-");
   let [y2, m2, d2] = target.split("-");
 
-  let monthNumber = Number(m2); // kiểm tra tháng 10,11,12
+  let monthNumber = Number(m2);
 
   let a1 = Number(d1[0]), b1 = Number(d1[1]);
   let c1 = Number(m1[0]), d1_2 = Number(m1[1]);
@@ -156,7 +163,6 @@ function calculate() {
   let TKQ = sumToOneDigit(YKQ + T2);
   let NKQ = sumToOneDigit(TKQ + N2);
 
-  // Kiểm tra tháng 10,11,12 → thêm +1
   let displayYKQ = [YKQ], displayTKQ = [TKQ], displayNKQ = [NKQ];
   if (monthNumber >= 10 && monthNumber <= 12) {
     displayYKQ.push(sumToOneDigit(YKQ + 1));
@@ -173,10 +179,12 @@ function calculate() {
   `;
 }
 
-/* --- MỚI: tự động cập nhật khi người dùng nhập, và gọi lần đầu khi tải --- */
 document.getElementById('birth').addEventListener('input', calculate);
 document.getElementById('target').addEventListener('input', calculate);
-document.addEventListener('DOMContentLoaded', calculate);
+document.addEventListener('DOMContentLoaded', function() {
+  setTodayAsDefault();
+  calculate();
+});
 </script>
 
 </body>
