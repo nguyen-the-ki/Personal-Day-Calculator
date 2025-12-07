@@ -7,7 +7,8 @@
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
-  body {
+  body, html {
+    overflow-x: hidden; 
     font-family: ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
     background: #ffffff;
     margin: 0;
@@ -84,13 +85,15 @@
     color: #ff0000;
   }
   
-  #birth {
-      line-height: 36px; 
-      text-align: left;
+  #birth, #target {
+      line-height: 48px; 
+      text-align: center;
   }
 
-  #birth::-webkit-date-and-time-value {
-      text-align: left;
+  #birth::-webkit-date-and-time-value,
+  #target::-webkit-date-and-time-value {
+      text-align: center !important;
+      padding-left: 0px; 
   }
 </style>
 </head>
