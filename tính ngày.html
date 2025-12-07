@@ -7,76 +7,88 @@
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
-body {
-  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  background: #ffffff;
-  margin: 0;
-  padding: 0;
-  color: #000000;
-  display: flex;
-  justify-content: center; /* Canh giữa theo chiều ngang */
-  align-items: top;
-  min-height: 100vh; /* Đảm bảo chiều cao của body chiếm toàn bộ màn hình */
-}
+  body {
+    font-family: ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    background: #ffffff;
+    margin: 0;
+    padding: 0;
+    color: #000000;
+  }
 
-.container {
-  max-width: 520px;
-  margin: 0; /* Hủy bỏ margin */
-  padding: 28px;
-  background: #ffffff;
-  border-radius: 20px;
-  text-align: center; /* Canh chữ trong khung */
-}
+  .container {
+    max-width: 520px;
+    margin: 40px auto;
+    padding: 28px;
+    background: #ffffff;
+    border-radius: 20px;
+  }
 
-input[type="date"] {
-  width: 100%; /* Làm cho input chiếm 100% chiều rộng của container */
-  height: 48px;
-  padding: 6px 10px;
-  margin-top: 8px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: clamp(12px, 4vw, 16px);
-  color: #000000;
-  background-color: #ffffff;
-  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  box-sizing: border-box;
-  display: block; /* Đảm bảo input là một block element */
-  margin-left: auto;
-  margin-right: auto;
-}
+  h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #000000;
+    font-size: clamp(10px, 8vw, 36px);
+  }
 
-input[type="date"]:focus {
-  outline: none;
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-}
+  label {
+    display: block;
+    font-size: clamp(10px, 4vw, 16px);
+    margin-top: 18px;
+    font-weight: 400;
+    color: #000000;
+  }
 
-.result-box {
-  text-align: center;
-  background: transparent;
-  padding: 0;
-  border-radius: 0;
-  font-size: clamp(10px, 5vw, 24px);
-  line-height: 1.7;
-  margin-top: 36px;
-  border: none;
-}
+  .full {
+    width: 100%;
+    box-sizing: border-box;
+  }
 
-.item {
-  font-weight: 700;
-  margin-top: 8px;
-  color: #000000;
-}
+  input[type="date"] {
+    width: min(100%, 600px);
+    height: 48px;
+    padding: 6px 10px;
+    margin-top: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: clamp(12px, 4vw, 16px);
+    color: #000000;
+    background-color: #ffffff;
+    font-family: ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    box-sizing: border-box;
+  }
 
-.number {
-  color: #ff0000;
-}
+  input[type="date"]:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  }
+
+  .result-box {
+    text-align: center;
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    font-size: clamp(10px, 5vw, 24px);
+    line-height: 1.7;
+    margin-top: 36px;
+    border: none;
+  }
+
+  .item {
+    font-weight: 700;
+    margin-top: 8px;
+    color: #000000;
+  }
+
+  .number {
+    color: #ff0000;
+  }
 </style>
 </head>
 <body>
 
 <div class="max-w-md mx-auto mt-10 p-7 bg-white rounded-xl">
-  <h2 class="text-center text-3xl font-bold mb-12">Năng lượng cá nhân</h2>
+  <h2 class="text-center text-3xl font-bold mb-16">Năng lượng cá nhân</h2>
 
   <label class="flex items-center gap-2 text-sm font-medium text-gray-700 mb-2">
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
