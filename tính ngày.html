@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tính Ngày – Tháng – Năm</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif; /* ✅ Font Arial */
+    background: #ffffff; /* ✅ Nền trắng */
+    margin: 0;
+    padding: 0;
+    color: #000000; /* ✅ Text màu đen */
+  }
+
+  .container {
+    max-width: 520px;
+    margin: 40px auto;
+    padding: 28px;
+    background: #ffffff; /* nền trắng */
+    border-radius: 20px;
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #000000;
+    font-size: 36px;
+  }
+
+  label {
+    display: block;
+    font-size: 16px;
+    margin-top: 18px;
+    font-weight: 600;
+    color: #000000;
+  }
+
+  .full {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  input[type="date"] {
+    padding: 14px;
+    margin-top: 8px;
+    border-radius: 6px; /* giảm bo góc từ 12px -> 6px */
+    border: 1px solid #ccc;
+    font-size: 16px;
+    color: #000000;
+  }
+
+  button {
+    padding: 16px;
+    color: #ffffff; /* chữ trắng trên nút */
+    background: #006400; /* ✅ xanh lá đậm */
+    border: none;
+    border-radius: 14px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+    margin-top: 28px;
+  }
+
+  button:hover {
+    background: #004d00; /* xanh lá đậm hơn khi hover */
+  }
+
+  .result-box {
+    text-align: center;
+    background: transparent; /* bỏ nền khung */
+    padding: 0;               /* bỏ padding khung */
+    border-radius: 0;         /* không bo góc */
+    font-size: 24px;
+    line-height: 1.7;
+    margin-top: 12px;         /* giữ khoảng cách nhỏ */
+    border: none;             /* bỏ đường viền */
+  }
+
+  .item {
+    font-weight: 700;
+    margin-top: 8px;
+    color: #000000;
+  }
+
+  .number {
+    color: #ff0000; /* ✅ số màu đỏ */
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Năng lượng cá nhân</h2>
+
+  <label>Ngày sinh:</label>
+  <input type="date" id="birth" class="full">
+
+  <label>Ngày cần tính (để trống = hôm nay):</label>
+  <input type="date" id="target" class="full">
+
+  <!-- nút đã bị loại bỏ - tự động tính khi thay đổi input -->
+  <div id="output" class="full"></div>
+</div>
+
+<script>
+function sumToOneDigit(num) {
+  num = num.toString().replace(/\D/g, "");
+  while (num.length > 1) {
+    num = num.split("").reduce((a,b) => a + Number(b), 0).toString();
+  }
+  return Number(num);
+}
+
+function calculate() {
+  let birth = document.getElementById("birth").value;
+  let target = document.getElementById("target").value;
+
+  // Nếu chưa nhập ngày sinh -> không hiện kết quả (bỏ thông báo)
+  if (!birth) {
+    document.getElementById("output").innerHTML = "";
+    return;
+  }
+
+  // Nếu không chọn ngày cần tính → tự lấy ngày hôm nay
+  if (!target) {
+    let today = new Date();
+    let yyyy = today.getFullYear();
+    let mm = String(today.getMonth() + 1).padStart(2, "0");
+    let dd = String(today.getDate()).padStart(2, "0");
+    target = `${yyyy}-${mm}-${dd}`;
+  }
+
+  let [y1, m1, d1] = birth.split("-");
+  let [y2, m2, d2] = target.split("-");
+
+  let monthNumber = Number(m2); // kiểm tra tháng 10,11,12
+
+  let a1 = Number(d1[0]), b1 = Number(d1[1]);
+  let c1 = Number(m1[0]), d1_2 = Number(m1[1]);
+
+  let a2 = Number(d2[0]), b2 = Number(d2[1]);
+  let c2 = Number(m2[0]), d2_2 = Number(m2[1]);
+
+  let yearDigits = y2.split("").map(Number);
+
+  let N1 = sumToOneDigit(a1 + b1);
+  let T1 = sumToOneDigit(c1 + d1_2);
+  let N2 = sumToOneDigit(a2 + b2);
+  let T2 = sumToOneDigit(c2 + d2_2);
+  let Y  = sumToOneDigit(yearDigits.reduce((a,b)=>a+b,0));
+
+  let YKQ = sumToOneDigit(N1 + T1 + Y);
+  let TKQ = sumToOneDigit(YKQ + T2);
+  let NKQ = sumToOneDigit(TKQ + N2);
+
+  // Kiểm tra tháng 10,11,12 → thêm +1
+  let displayYKQ = [YKQ], displayTKQ = [TKQ], displayNKQ = [NKQ];
+  if (monthNumber >= 10 && monthNumber <= 12) {
+    displayYKQ.push(sumToOneDigit(YKQ + 1));
+    displayTKQ.push(sumToOneDigit(TKQ + 1));
+    displayNKQ.push(sumToOneDigit(NKQ + 1));
+  }
+
+  document.getElementById("output").innerHTML = `
+    <div class="result-box">
+      <div class="item">Năm: <span class="number">${displayYKQ.join(" / ")}</span></div>
+      <div class="item">Tháng: <span class="number">${displayTKQ.join(" / ")}</span></div>
+      <div class="item">Ngày: <span class="number">${displayNKQ.join(" / ")}</span></div>
+    </div>
+  `;
+}
+
+/* --- MỚI: tự động cập nhật khi người dùng nhập, và gọi lần đầu khi tải --- */
+document.getElementById('birth').addEventListener('input', calculate);
+document.getElementById('target').addEventListener('input', calculate);
+document.addEventListener('DOMContentLoaded', calculate);
+</script>
+
+</body>
+</html>
