@@ -26,12 +26,12 @@
     text-align: center;
     margin-bottom: 25px;
     color: #000000;
-    font-size: 36px;
+    font-size: clamp(24px, 8vw, 36px); /* tự chỉnh từ 24px -> 36px */
   }
 
   label {
     display: block;
-    font-size: 16px;
+    font-size: clamp(14px, 4vw, 16px); /* tự chỉnh từ 14px -> 16px */
     margin-top: 18px;
     font-weight: 600;
     color: #000000;
@@ -47,7 +47,7 @@
     margin-top: 8px;
     border-radius: 6px; /* giảm bo góc từ 12px -> 6px */
     border: 1px solid #ccc;
-    font-size: 16px;
+    font-size: clamp(14px, 3vw, 16px); /* tự chỉnh từ 14px -> 16px */
     color: #000000;
   }
 
@@ -57,7 +57,7 @@
     background: #006400; /* ✅ xanh lá đậm */
     border: none;
     border-radius: 14px;
-    font-size: 18px;
+    font-size: clamp(16px, 4vw, 18px); /* tự chỉnh từ 16px -> 18px */
     font-weight: 600;
     cursor: pointer;
     transition: 0.2s;
@@ -73,7 +73,7 @@
     background: transparent; /* bỏ nền khung */
     padding: 0;               /* bỏ padding khung */
     border-radius: 0;         /* không bo góc */
-    font-size: 24px;
+    font-size: clamp(18px, 5vw, 24px); /* tự chỉnh từ 18px -> 24px */
     line-height: 1.7;
     margin-top: 12px;         /* giữ khoảng cách nhỏ */
     border: none;             /* bỏ đường viền */
