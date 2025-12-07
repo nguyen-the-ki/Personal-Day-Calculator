@@ -25,7 +25,7 @@
 
   h2 {
     text-align: center;
-    margin-bottom: 25px;
+    margin-bottom: 40px;
     color: #000000;
     font-size: clamp(10px, 8vw, 36px);
   }
@@ -50,10 +50,17 @@
     margin-top: 8px;
     border-radius: 6px;
     border: 1px solid #ccc;
-    font-size: clamp(10px, 3vw, 16px);
+    font-size: clamp(12px, 4vw, 16px);
     color: #000000;
+    background-color: #ffffff;
     font-family: ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
     box-sizing: border-box;
+  }
+
+  input[type="date"]:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
   }
 
   .result-box {
@@ -81,7 +88,7 @@
 <body>
 
 <div class="max-w-md mx-auto mt-10 p-7 bg-white rounded-xl">
-  <h2 class="text-center text-3xl font-bold mb-6">Năng lượng cá nhân</h2>
+  <h2 class="text-center text-3xl font-bold mb-12">Năng lượng cá nhân</h2>
 
   <label class="flex items-center gap-2 text-sm font-medium text-gray-700 mb-2">
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
